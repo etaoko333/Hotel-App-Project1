@@ -3,7 +3,7 @@ version: 0.2
 env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/sholly333
-    DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/Osenat333#
+    DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password  # Corrected to reference the parameter name
     DOCKER_REGISTRY_URL: /cloud-cicd/docker-registry/url
 
 phases:
