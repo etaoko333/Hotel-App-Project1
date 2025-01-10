@@ -3,24 +3,31 @@ version: 0.2
 env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/sholly333
-    DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password  # Corrected to reference the parameter name
+    DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password
     DOCKER_REGISTRY_URL: /cloud-cicd/docker-registry/url
 
 phases:
   install:
     runtime-versions:
       python: 3.11
+      docker: 20  # Specify the Docker version
+    commands:
+      - echo "Installing Buildx..."
+      - docker buildx install
+
   pre_build:
     commands:
       - echo "Installing dependencies..."
       - pip install -r requirements.txt
+      - echo "Logging in to Docker..."
+      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+
   build:
     commands:
       - echo "Running tests..."
       - echo "Building Docker image..."
-      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" .
-      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest"
+      - docker buildx build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" --push .
+
   post_build:
     commands:
       - echo "Build completed successfully!"
