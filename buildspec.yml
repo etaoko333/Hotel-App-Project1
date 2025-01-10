@@ -10,24 +10,22 @@ phases:
   install:
     runtime-versions:
       python: 3.11
-      docker: 20  # Specify the Docker version
-
-    commands:
-      - echo "Installing Buildx..."
-      - docker buildx install
-
-  pre_build:
+      
     commands:
       - echo "Installing dependencies..."
       - pip install -r requirements.txt
+
+  pre_build:
+    commands:
       - echo "Logging in to Docker..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
 
   build:
     commands:
-      - echo "Running tests..."
-      - echo "Building Docker image..."
-      - docker buildx build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" --push .
+      - echo "Build phase: Building Docker image..."
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" .
+      - echo "Build phase: Pushing Docker image..."
+      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest"
 
   post_build:
     commands:
