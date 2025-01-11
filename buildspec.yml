@@ -4,7 +4,7 @@ env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/sholly333
     DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password
-    DOCKER_REGISTRY_URL: /cloud-cicd/docker-registry/url
+    DOCKER_REGISTRY_URL: docker.io  # Updated to match DockerHub
 
 phases:
   install:
@@ -12,8 +12,8 @@ phases:
       python: 3.11
     commands:
       - echo "Installing dependencies..."
-      # Ensure the correct package manager is used (apt-get for Debian-based, yum for RedHat-based)
-      - if command -v apt-get > /dev/null; then apt-get update -y && apt-get install -y docker.io; elif command -v yum > /dev/null; then yum update -y && yum install -y docker; else echo "No suitable package manager found!" && exit 1; fi
+      - apt-get update -y || yum update -y  # Use appropriate package manager
+      - apt-get install -y docker.io || yum install -y docker
   pre_build:
     commands:
       - echo "Logging into Docker registry..."
