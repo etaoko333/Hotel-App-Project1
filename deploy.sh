@@ -19,6 +19,9 @@ fi
 # Export Docker path
 export PATH=$PATH:/usr/bin
 
+# Log the current PATH to help with debugging
+echo "Current PATH: $PATH"
+
 # Check if Docker service is running
 if ! /usr/bin/docker info &> /dev/null; then
     echo "Docker service failed to start. Exiting..."
@@ -34,6 +37,8 @@ if [ "$(docker ps -q -f name=hotel-app)" ]; then
     echo "Stopping the old container..."
     /usr/bin/docker stop hotel-app
     /usr/bin/docker rm hotel-app
+else
+    echo "No running container named hotel-app."
 fi
 
 # Run the new container
