@@ -4,7 +4,6 @@ env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/sholly333
     DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password
-    DOCKER_REGISTRY_URL: docker.io  # Updated to match DockerHub
 
 phases:
   install:
@@ -17,13 +16,13 @@ phases:
   pre_build:
     commands:
       - echo "Logging into Docker registry..."
-      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
+      - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin docker.io
   build:
     commands:
       - echo "Building Docker image..."
-      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" .
+      - docker build -t "docker.io/$DOCKER_REGISTRY_USERNAME/hotel-app:latest" .
       - echo "Pushing Docker image to registry..."
-      - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/hotel-app:latest"
+      - docker push "docker.io/$DOCKER_REGISTRY_USERNAME/hotel-app:latest"
   post_build:
     commands:
       - echo "Build completed successfully!"
