@@ -12,7 +12,7 @@ then
 fi
 
 # Pull the latest Docker image
-docker pull <your-docker-registry-url>/<your-docker-username>/hotel-app:latest
+docker pull docker.io/sholly333/hotel-app:latest
 
 # Stop the old container if running
 if [ "$(docker ps -q -f name=hotel-app)" ]; then
@@ -21,4 +21,4 @@ if [ "$(docker ps -q -f name=hotel-app)" ]; then
 fi
 
 # Run the new container
-docker run -d --name hotel-app -p 80:80 <your-docker-registry-url>/<your-docker-username>/hotel-app:latest
+docker run -d --name hotel-app -p 80:80 docker.io/sholly333/hotel-app:latest
