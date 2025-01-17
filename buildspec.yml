@@ -2,8 +2,9 @@ version: 0.2
 
 env:
   parameter-store:
-    DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/sholly333
+    DOCKER_REGISTRY_USERNAME: /cloud-cicd/docker-credentials/username
     DOCKER_REGISTRY_PASSWORD: /cloud-cicd/docker-credentials/password
+    DOCKER_REGISTRY_URL: /cloud-cicd/docker-registry/url
 
 phases:
   install:
@@ -11,8 +12,7 @@ phases:
       python: 3.11
     commands:
       - echo "Installing dependencies..."
-      - apt-get update -y || yum update -y  # Use appropriate package manager
-      - apt-get install -y docker.io || yum install -y docker
+      - pip install -r requirements.txt
   pre_build:
     commands:
       - echo "Logging into Docker registry..."
