@@ -5,4 +5,4 @@ set -e
 docker pull sholly333/hotel-app:latest
 
 # Run the Docker image as a container
-docker run -dit -p 8082:80 sholly333/hotel-app
+docker run -dit -p 8083:80 sholly333/hotel-app
