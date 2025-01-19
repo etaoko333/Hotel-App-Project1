@@ -3,188 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Web Page Title</title>
+    <title>Your Hotel Website</title>
     <link rel="stylesheet" href="./style.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .app-container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #ff69b4; /* Bright pink */
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card-wrapper {
+            border: 2px solid #ff69b4; /* Pink border */
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px;
+            width: 300px; /* Fixed width for cards */
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .card-image-wrapper img {
+            max-width: 100%;
+            height: auto;
+        }
+        .card-info {
+            padding: 10px;
+        }
         .card-text {
-            color: #FF6347; /* Bright Tomato color for better visibility */
+            color: #FF69B4; /* Bright pink for hotel names */
         }
         .card-price {
-            color: #FFD700; /* Bright Gold color for pricing */
+            color: #FFD700; /* Bright gold for pricing */
         }
         .modal-info-header h1 {
-            color: #32CD32; /* Bright Lime Green for modal header */
+            color: #32CD32; /* Bright lime green for modal header */
         }
         .modal-info-header p {
-            color: #1E90FF; /* Bright Dodger Blue for modal location */
+            color: #1E90FF; /* Bright dodger blue for modal location */
+        }
+        .app-main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
 
+<div class="header">
+    <h1>Welcome to Our Hotel Collection</h1>
+</div>
+
 <div class="app-container">
-  <section class="navigation">
-    <a href="#" class="app-link">Travelers</a>
-    <div class="navigation-links">
-      <a href="#" class="nav-link">Destinations</a>
-      <a href="#" class="nav-link active">Hotels</a>
-      <a href="#" class="nav-link">Camping</a>
-      <a href="#" class="nav-link">Car Rent</a>
-    </div>
-    <div class="nav-right-side">
-      <button class="mode-switch">
-       <svg class="sun" fill="none" stroke="#fbb046" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-sun" viewBox="0 0 24 24"><defs/><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-       <svg class="moon" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-moon" viewBox="0 0 24 24"><defs/><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-     </button>
-      <button class="profile-btn">
-      <span>Ryan Evans</span>
-      <img src="https://images.unsplash.com/photo-1492633397843-92adffad3d1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2167&q=80" alt="pp">
-    </button>
-    </div>  
-  </section>
-  <section class="app-actions">
-    <!-- Existing code omitted for brevity -->
-  </section>
-  <section class="app-main">
-    <div class="app-main-left cards-area">
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-668923924-1024x1024.jpg" alt="The Grand Budapest Hotel">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Grand Budapest Hotel</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$1000</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1210977536-1024x1024.jpg" alt="The Grand Canyon Hotel">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Grand Canyon Hotel</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$1500</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-903417402-1024x1024.jpg" alt="The Beakman Spa Hotel">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Beakman Spa Hotel</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$1300</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-147006062-1024x1024.jpg" alt="Paloma Hotel & Spa">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">Paloma Hotel & Spa</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$700</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1074968856-1024x1024.jpg" alt="The Golden Hours Hotel">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Golden Hours Hotel</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$700</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-503019528-1024x1024.jpg" alt="The Daydream Hotel & Spa">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Daydream Hotel & Spa</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$1250</span></div>
-          </div>
-        </a>
-      </div>
-      <div class="card-wrapper main-card">
-        <a class="card cardItemjs" onclick="openModal()">
-          <div class="card-image-wrapper">
-            <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1907189599-1024x1024.jpg" alt="The Harmony Hotel">
-          </div>
-          <div class="card-info">
-            <div class="card-text big cardText-js">The Harmony Hotel</div>
-            <div class="card-text small">Stockton Street</div>
-            <div class="card-text small">Starts from: <span class="card-price">$500</span></div>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="app-main-right cards-area">
-      <div class="app-main-right-header">
-        <span>Latest Deals</span>
-        <a href="#">See More</a>
-      </div>
-      <!-- Additional cards can be added similarly -->
-    </div>
-  </section>
+    <section class="app-main">
+        <div class="app-main-left cards-area">
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-668923924-1024x1024.jpg" alt="The Grand Budapest Hotel">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">The Grand Budapest Hotel</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1000</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1210977536-1024x1024.jpg" alt="The Grand Canyon Hotel">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Canyon View Retreat</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1500</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-903417402-1024x1024.jpg" alt="The Beakman Spa Hotel">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Beakman Spa Oasis</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1300</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-147006062-1024x1024.jpg" alt="Paloma Hotel & Spa">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Paloma Serenity Hotel</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$700</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1074968856-1024x1024.jpg" alt="The Golden Hours Hotel">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Golden Hours Retreat</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$700</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-503019528-1024x1024.jpg" alt="The Daydream Hotel & Spa">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Daydream Spa & Resort</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1250</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1907189599-1024x1024.jpg" alt="The Harmony Hotel">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Harmony Bliss Hotel</div>
+                        <div class="card-text small">Stockton Street</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$500</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-183032943-1024x1024.jpg" alt="Hotel 8">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Ocean Breeze Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$800</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-157695209-1024x1024.jpg" alt="Hotel 9">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Mountain Peak Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$900</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1542498528-1024x1024.jpg" alt="Hotel 10">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Starry Night Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1100</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1482134178-1024x1024.jpg" alt="Hotel 11">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Sunset Paradise Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$950</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1469640952-1024x1024.jpg" alt="Hotel 12">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Emerald Bay Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1050</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1333257956-1024x1024.jpg" alt="Hotel 13">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Whispering Pines Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1200</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="card-wrapper main-card">
+                <a class="card cardItemjs" onclick="openModal()">
+                    <div class="card-image-wrapper">
+                        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/istockphoto-1074968856-1024x1024.jpg" alt="Hotel 14">
+                    </div>
+                    <div class="card-info">
+                        <div class="card-text big cardText-js">Crystal Waters Hotel</div>
+                        <div class="card-text small">Location</div>
+                        <div class="card-text small">Starts from: <span class="card-price">$1150</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 </div>
+
+<!-- Modal Section -->
 <div id="modal-window" class="shadow">
-  <div class="main-modal">
-    <div class="modal-left">
-      <div class="modal-image-wrapper">
-        <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/hotel-928937_1280.jpg" alt="Modal Hotel Image">
-      </div>
-      <div class="modal-info-header">
-        <div class="left-side">
-          <h1 class="modalHeader-js">Hotel Name</h1>
-          <p>Stockton Street</p>
+    <div class="main-modal">
+        <div class="modal-left">
+            <div class="modal-image-wrapper">
+                <img src="https://hotelapp-project.s3.us-west-1.amazonaws.com/hotel-928937_1280.jpg" alt="Modal Hotel Image">
+            </div>
+            <div class="modal-info-header">
+                <div class="left-side">
+                    <h1 class="modalHeader-js">Hotel Name</h1>
+                    <p>Stockton Street</p>
+                </div>
+                <div class="right-side">Starts from: <span class="amount">$1000</span></div>
+            </div>
+            <div class="desc-wrapper">
+                <div class="modal-info-header">
+                    <h1>Description</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div class="desc-actions">
+                    <button class="btn-book">Book Now</button>
+                    <div class="add-favourite">
+                        <input type="checkbox" id="favourite"><label for="favourite">Add to favourites</label>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="right-side">Starts from: <span class="amount">$1000</span></div>
-      </div>
-      <div class="info-bar">
-        <!-- Info bar content omitted for brevity -->
-      </div>
-      <div class="desc-wrapper">
-        <div class="modal-info-header">
-          <h1>Description</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <div class="modal-right">
+            <div class="app-main-right-header">
+                <span>Reviews</span>
+                <a href="#">See All</a>
+            </div>
         </div>
-        <div class="desc-actions">
-          <button class="btn-book">Book Now</button>
-          <div class="add-favourite">
-            <input type="checkbox" id="favourite"><label for="favourite">Add to favourites</label>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-right">
-      <div class="app-main-right-header">
-        <span>Reviews</span>
-        <a href="#">See All</a>
-      </div>
-      <!-- Review cards omitted for brevity -->
-    </div>
-    <button class="btn btn-close" onclick="closeM()">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>    
+        <button class="btn btn-close" onclick="closeM()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>    
 </div>
-<script> 
-  let ini = document.querySelector('#modal-window');
-  ini.classList.add("hideModal");
+
+<script>
+    let ini = document.querySelector('#modal-window');
+    ini.classList.add("hideModal");
 </script>
 <script src="./index.js"></script>
 </body>
